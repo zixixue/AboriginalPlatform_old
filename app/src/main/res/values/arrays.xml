@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="str_main_category">
+        <item>Climate</item>
+        <item>Environment</item>
+        <item>Art</item>
+        <item>Employment</item>
+        <item>Culture</item>
+        <item>Language</item>
+    </string-array>
+
+</resources>

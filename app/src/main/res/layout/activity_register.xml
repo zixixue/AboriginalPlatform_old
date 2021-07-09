@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greenD9E3D0"
+    tools:context="au.edu.unsw.infs3605.aboriginalplatform.activity.LoginActivity">
+
+    <Space
+        android:id="@+id/sTop"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tvUserNameDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1" />
+
+    <TextView
+        android:id="@+id/tvUserNameDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="User Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/etUserName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sTop" />
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_input"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tvUserEmailDesc"
+        app:layout_constraintEnd_toEndOf="@id/tvUserNameDesc"
+        app:layout_constraintStart_toStartOf="@id/tvUserNameDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvUserNameDesc" />
+
+    <TextView
+        android:id="@+id/tvUserEmailDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="User Email"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/etUserEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUserName" />
+
+    <EditText
+        android:id="@+id/etUserEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_input"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tvPwdDesc"
+        app:layout_constraintEnd_toEndOf="@id/tvUserEmailDesc"
+        app:layout_constraintStart_toStartOf="@id/tvUserEmailDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvUserEmailDesc" />
+
+
+    <TextView
+        android:id="@+id/tvPwdDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Password"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/etPwd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUserEmail" />
+
+    <EditText
+        android:id="@+id/etPwd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_input"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/tvConfirmPwdDesc"
+        app:layout_constraintEnd_toEndOf="@id/tvUserNameDesc"
+        app:layout_constraintStart_toStartOf="@id/tvUserNameDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvPwdDesc" />
+
+    <TextView
+        android:id="@+id/tvConfirmPwdDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Confirm Password"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/etConfirmPwd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etPwd" />
+
+    <EditText
+        android:id="@+id/etConfirmPwd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_input"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/tvRoleDesc"
+        app:layout_constraintEnd_toEndOf="@id/tvUserNameDesc"
+        app:layout_constraintStart_toStartOf="@id/tvUserNameDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvConfirmPwdDesc" />
+
+    <TextView
+        android:id="@+id/tvRoleDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center|start"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text=" Are you an Indigenous Australian?"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/rgRole"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPwd" />
+
+    <RadioGroup
+        android:id="@+id/rgRole"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center|start"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/cbAgreement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRoleDesc">
+
+        <RadioButton
+            android:id="@+id/rbOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Yes, I am" />
+
+        <RadioButton
+            android:id="@+id/rbNot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Yes, I am not" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cbAgreement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="I have already read and agreed"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textColor="@color/black66"
+        app:layout_constraintBottom_toTopOf="@id/tvRegister"
+        app:layout_constraintEnd_toStartOf="@id/tvAgreement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rgRole" />
+
+    <TextView
+        android:id="@+id/tvAgreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="30dp"
+        android:text="User Agreement"
+        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="@id/cbAgreement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/cbAgreement"
+        app:layout_constraintTop_toTopOf="@id/cbAgreement" />
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_input"
+        android:paddingStart="80dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="80dp"
+        android:paddingBottom="10dp"
+        android:text="Register"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/sBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cbAgreement" />
+
+    <Space
+        android:id="@+id/sBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegister"
+        app:layout_constraintVertical_weight="1.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "449765947994",
+    "project_id": "aboriginalplatform",
+    "storage_bucket": "aboriginalplatform.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449765947994:android:c658e7b66ef98ed250b663",
+        "android_client_info": {
+          "package_name": "au.edu.unsw.infs3605.aboriginalplatform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449765947994-b4t7m8h4g2mnqmb10klkqvceekrlbjr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "au.edu.unsw.infs3605.aboriginalplatform",
+            "certificate_hash": "15e38e1912fdc9a68440490cad433cbba3e71d52"
+          }
+        },
+        {
+          "client_id": "449765947994-6soe0ae7qikjjod7me3vh1or58mlfa0s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPIha5Xh4EJ_Z-LJq8maYExAw2omdAkgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449765947994-6soe0ae7qikjjod7me3vh1or58mlfa0s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
