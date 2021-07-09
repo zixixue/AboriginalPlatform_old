@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,6 +28,8 @@ import au.edu.unsw.infs3605.aboriginalplatform.R;
 import au.edu.unsw.infs3605.aboriginalplatform.utils.RegUtil;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "RegisterActivity";
 
     private TextView tvUserNameDesc;
     private EditText etUserName;
@@ -90,31 +93,32 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 String userPwd = etPwd.getText().toString().trim();
                 String userConfirmPwd = etConfirmPwd.getText().toString().trim();
                 if (TextUtils.isEmpty(userName)) {
-                    Toast.makeText(this, "user name is not empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "USER NAME CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(userEmail)) {
-                    Toast.makeText(this, "user email is not empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "USER EMAIL CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Log.i(TAG, "onClick: 【" + userEmail + "】");
                 if (!RegUtil.isEmail(userEmail)) {
-                    Toast.makeText(this, "user email is not valid", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "USER EMAIL IS NOT VALID", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(userPwd)) {
-                    Toast.makeText(this, "user password is not empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "USER PASSWORD CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(userConfirmPwd)) {
-                    Toast.makeText(this, "user confirm password is not empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "USER CONFIRM PASSWORD CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!TextUtils.equals(userPwd, userConfirmPwd)) {
-                    Toast.makeText(this, "The two passwords do not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "THE TWO PASSWORDS YOU TYPED DO NOT MATCH", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (!cbAgreement.isChecked()) {
-                    Toast.makeText(this, "Please agree to the User Agreement", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "PLEASE AGREE TO THE USER AGREEMENT", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mAuth.createUserWithEmailAndPassword(userEmail, userPwd)
