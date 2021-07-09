@@ -142,6 +142,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                                 });
                                     }
                                 } else {
+                                    task.getException().printStackTrace();
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_SHORT).show();
                                 }
