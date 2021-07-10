@@ -97,8 +97,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_input"
-        android:padding="10dp"
         android:inputType="textPassword"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@id/tvConfirmPwdDesc"
         app:layout_constraintEnd_toEndOf="@id/tvUserNameDesc"
         app:layout_constraintStart_toStartOf="@id/tvUserNameDesc"
@@ -126,12 +126,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_input"
-        android:padding="10dp"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@id/tvRoleDesc"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@id/tvPwdNote"
         app:layout_constraintEnd_toEndOf="@id/tvUserNameDesc"
         app:layout_constraintStart_toStartOf="@id/tvUserNameDesc"
         app:layout_constraintTop_toBottomOf="@id/tvConfirmPwdDesc" />
+
+    <TextView
+        android:id="@+id/tvPwdNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Password should be at least 6 characters"
+        android:textColor="@color/black66"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/tvRoleDesc"
+        app:layout_constraintStart_toStartOf="@id/etConfirmPwd"
+        app:layout_constraintTop_toBottomOf="@id/etConfirmPwd" />
+
 
     <TextView
         android:id="@+id/tvRoleDesc"
@@ -149,7 +162,7 @@
         app:layout_constraintBottom_toTopOf="@id/rgRole"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etConfirmPwd" />
+        app:layout_constraintTop_toBottomOf="@id/tvPwdNote" />
 
     <RadioGroup
         android:id="@+id/rgRole"
@@ -176,7 +189,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:text="Yes, I am not" />
+            android:text="No, I am not" />
 
     </RadioGroup>
 
@@ -185,9 +198,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="I have already read and agreed"
-        android:lines="1"
         android:ellipsize="end"
+        android:lines="1"
+        android:text="I have already read and agreed"
         android:textColor="@color/black66"
         app:layout_constraintBottom_toTopOf="@id/tvRegister"
         app:layout_constraintEnd_toStartOf="@id/tvAgreement"
