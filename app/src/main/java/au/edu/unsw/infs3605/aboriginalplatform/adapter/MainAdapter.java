@@ -54,17 +54,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         String category = mData.get(position);
         holder.tvName.setText(category);
-        int width = holder.cvRoot.getMeasuredWidth();
-        holder.cvRoot.post(new Runnable() {
-            @Override
-            public void run() {
-                ViewGroup.LayoutParams layoutParams = holder.cvRoot.getLayoutParams();
-                Log.i(TAG, "run: " + layoutParams.width);
-                layoutParams.height = holder.cvRoot.getMeasuredWidth();
-                holder.cvRoot.setLayoutParams(layoutParams);
-            }
-        });
         holder.cvRoot.setOnClickListener(v -> {
+            Log.i(TAG, "onBindViewHolder: ");
             if (mIOnViewListener != null) {
                 mIOnViewListener.onViewClick(v, category, position);
             }

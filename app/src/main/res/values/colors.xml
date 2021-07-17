@@ -14,6 +14,11 @@
     <color name="grayF2">#f2f2f2</color>
     <color name="grayF5">#f5f5f5</color>
     <color name="grayF8">#f8f8f8</color>
+    <color name="greyCd">#cdcdcd</color>
+    <color name="grey80">#808080</color>
+    <color name="grey8a">#8a8a8a</color>
+    <color name="grey92">#929292</color>
     <color name="greenB6CBAA">#B6CBAA</color>
     <color name="greenD9E3D0">#D9E3D0</color>
+    <color name="blue33b5e5">#ff33b5e5</color>
 </resources>

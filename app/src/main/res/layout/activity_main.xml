@@ -5,43 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Topic"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContent"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2Content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/tvLogout"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
-        app:spanCount="2" />
+        app:layout_constraintBottom_toTopOf="@id/bnvBottom"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvLogout"
-        android:layout_width="wrap_content"
-        android:padding="15dp"
-        android:layout_height="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvBottom"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/greenB6CBAA"
+        app:itemIconSize="20dp"
+        app:itemTextColor="@color/selector_color_tab_main"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvContent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:text="logout" />
-
+        app:layout_constraintTop_toBottomOf="@id/vp2Content"
+        app:menu="@menu/menu_bottom_nav_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/iTitle"
+        layout="@layout/include_title"
+        app:layout_constraintBottom_toTopOf="@id/tvConversation"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvConversation"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:drawableEnd="@mipmap/ic_arrow_grey"
+        android:drawablePadding="5dp"
+        android:gravity="center|start"
+        android:textColor="@color/black33"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/tvConversationHint"
+        app:layout_constraintTop_toBottomOf="@id/iTitle" />
+
+    <TextView
+        android:id="@+id/tvConversationHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="Click to reselect the topic"
+        android:textColor="@color/black99"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tvConversationTitle"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/tvConversation" />
+
+    <TextView
+        android:id="@+id/tvConversationTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center|start"
+        android:text="Conversation Title"
+        android:textColor="@color/black33"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/etConversationTitle"
+        app:layout_constraintEnd_toEndOf="@id/tvConversation"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/tvConversationHint" />
+
+    <EditText
+        android:id="@+id/etConversationTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toTopOf="@id/tvConversationContent"
+        app:layout_constraintEnd_toEndOf="@id/tvConversation"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/tvConversationTitle" />
+
+    <TextView
+        android:id="@+id/tvConversationContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center|start"
+        android:text="Conversation Content"
+        android:textColor="@color/black33"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/etConversationContent"
+        app:layout_constraintEnd_toEndOf="@id/tvConversation"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/etConversationTitle" />
+
+    <EditText
+        android:id="@+id/etConversationContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toTopOf="@id/ivAddImg"
+        app:layout_constraintEnd_toEndOf="@id/tvConversation"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/tvConversationContent" />
+
+    <ImageView
+        android:id="@+id/ivAddImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/ic_add_white"
+        app:layout_constraintBottom_toTopOf="@id/sBottom"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/etConversationContent" />
+
+    <Space
+        android:id="@+id/sBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvConversation"
+        app:layout_constraintStart_toStartOf="@id/tvConversation"
+        app:layout_constraintTop_toBottomOf="@id/ivAddImg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

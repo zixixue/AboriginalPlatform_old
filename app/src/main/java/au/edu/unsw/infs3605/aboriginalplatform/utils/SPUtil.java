@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import java.util.Map;
 
+import au.edu.unsw.infs3605.aboriginalplatform.entity.UserExtendData;
+
 /**
  *
  */
@@ -40,8 +42,9 @@ public class SPUtil {
      *
      * @param key
      * @param object
+     * @return
      */
-    public void setParam(String key, Object object) {
+    public UserExtendData setParam(String key, Object object) {
 
         String type = object.getClass().getSimpleName();
         SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -64,6 +67,7 @@ public class SPUtil {
             default:
         }
         editor.apply();
+        return null;
     }
 
 
@@ -87,6 +91,7 @@ public class SPUtil {
                 return mSharedPreferences.getFloat(key, (Float) defaultObject);
             case "Long":
                 return mSharedPreferences.getLong(key, (Long) defaultObject);
+            default:
         }
         return null;
     }

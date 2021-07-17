@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -13,19 +12,21 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Transaction;
+
+import java.util.Objects;
 
 import au.edu.unsw.infs3605.aboriginalplatform.R;
+import au.edu.unsw.infs3605.aboriginalplatform.entity.UserExtendData;
 import au.edu.unsw.infs3605.aboriginalplatform.utils.RegUtil;
+
+import static au.edu.unsw.infs3605.aboriginalplatform.Constants.TABLE_USER_EXTEND;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvAgreement;
 
     private FirebaseAuth mAuth;
-    private int isRole;
+    private boolean isRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mAuth = FirebaseAuth.getInstance();
         tvAgreement.setOnClickListener(this);
         tvRegister.setOnClickListener(this);
-        rgRole.setOnCheckedChangeListener((group, checkedId) -> isRole = checkedId == R.id.rbOk ? 1 : 0);
+        rgRole.setOnCheckedChangeListener((group, checkedId) -> isRole = checkedId == R.id.rbOk);
     }
 
     /**
@@ -100,7 +101,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Toast.makeText(this, "USER EMAIL CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Log.i(TAG, "onClick: 【" + userEmail + "】");
                 if (!RegUtil.isEmail(userEmail)) {
                     Toast.makeText(this, "USER EMAIL IS NOT VALID", Toast.LENGTH_SHORT).show();
                     return;
@@ -122,30 +122,33 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 mAuth.createUserWithEmailAndPassword(userEmail, userPwd)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    if (user != null) {
+                        .addOnCompleteListener(this, task -> {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user != null) {
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                    db.runTransaction((Transaction.Function<Void>) transaction -> {
+                                        UserExtendData userExtendData = new UserExtendData();
+                                        userExtendData.setUserId(user.getUid());
+                                        userExtendData.setAusOriginal(isRole);
+                                        db.collection(TABLE_USER_EXTEND)
+                                                .add(userExtendData)
+                                                .addOnSuccessListener(documentReference ->
+                                                        transaction.update(documentReference, "id", documentReference.getId()));
                                         user.updateProfile(new UserProfileChangeRequest.Builder()
                                                 .setDisplayName(userName)
-                                                .build())
-                                                .addOnCompleteListener(task1 -> {
-                                                    if (task1.isSuccessful()) {
-                                                        Toast.makeText(RegisterActivity.this, "Register Success", Toast.LENGTH_SHORT).show();
-                                                        RegisterActivity.this.finish();
-                                                    } else {
-                                                        Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                    }
-                                } else {
-                                    task.getException().printStackTrace();
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_SHORT).show();
+                                                .build());
+                                        return null;
+                                    }).addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(RegisterActivity.this, "Register Success", Toast.LENGTH_SHORT).show();
+                                        RegisterActivity.this.finish();
+                                    }).addOnFailureListener(e -> Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_SHORT).show());
                                 }
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_SHORT).show();
+                                Objects.requireNonNull(task.getException()).printStackTrace();
                             }
                         });
                 break;

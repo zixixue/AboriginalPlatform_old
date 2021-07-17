@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/iTitle"
+        layout="@layout/include_title"
+        app:layout_constraintBottom_toTopOf="@id/tvConversationsDesc"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvConversationsDesc"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/shape_rv_top_desc"
+        android:gravity="center|start"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Recent Conversations"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/rvConversations"
+        app:layout_constraintTop_toBottomOf="@id/iTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvConversations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rv_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/tvNewsDesc"
+        app:layout_constraintEnd_toEndOf="@id/tvConversationsDesc"
+        app:layout_constraintStart_toStartOf="@id/tvConversationsDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvConversationsDesc" />
+
+    <TextView
+        android:id="@+id/tvConversations"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_rv_content"
+        android:gravity="center"
+        android:text="There's no Conversations these days"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/rvConversations"
+        app:layout_constraintEnd_toEndOf="@id/rvConversations"
+        app:layout_constraintStart_toStartOf="@id/rvConversations"
+        app:layout_constraintTop_toTopOf="@id/rvConversations" />
+
+    <TextView
+        android:id="@+id/tvNewsDesc"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_rv_top_desc"
+        android:gravity="center|start"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Recent News"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/rvNews"
+        app:layout_constraintEnd_toEndOf="@id/tvConversationsDesc"
+        app:layout_constraintStart_toStartOf="@id/tvConversationsDesc"
+        app:layout_constraintTop_toBottomOf="@id/rvConversations" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape_rv_content"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/tvConversationsDesc"
+        app:layout_constraintStart_toStartOf="@id/tvConversationsDesc"
+        app:layout_constraintTop_toBottomOf="@id/tvNewsDesc" />
+
+    <TextView
+        android:id="@+id/tvNoDateNews"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_rv_content"
+        android:gravity="center"
+        android:text="There's no News these days"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/rvNews"
+        app:layout_constraintEnd_toEndOf="@id/rvNews"
+        app:layout_constraintStart_toStartOf="@id/rvNews"
+        app:layout_constraintTop_toTopOf="@id/rvNews" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

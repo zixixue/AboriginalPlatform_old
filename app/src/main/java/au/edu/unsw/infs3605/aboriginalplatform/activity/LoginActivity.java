@@ -24,8 +24,11 @@ import com.google.gson.Gson;
 
 import au.edu.unsw.infs3605.aboriginalplatform.Constants;
 import au.edu.unsw.infs3605.aboriginalplatform.R;
+import au.edu.unsw.infs3605.aboriginalplatform.entity.UserExtendData;
 import au.edu.unsw.infs3605.aboriginalplatform.utils.RegUtil;
 import au.edu.unsw.infs3605.aboriginalplatform.utils.SPUtil;
+
+import static au.edu.unsw.infs3605.aboriginalplatform.Constants.TABLE_USER_EXTEND;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -90,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tvForgetPwdDesc:
-                startActivity(new Intent(this, ForgetPwdActivity.class));
+                forgetPwd();
                 break;
             case R.id.tvLogin:
                 String userEmail = etUserEmail.getText().toString().trim();
@@ -117,7 +120,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     // Sign in success, update UI with the signed-in user's information
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     if (user != null) {
-                                        SPUtil.getInstance().setParam(Constants.CACHE_USER, new Gson().toJson(user));
+                                        FirebaseFirestore.getInstance().collection(TABLE_USER_EXTEND)
+                                                .whereEqualTo("id", user.getUid())
+                                                .get()
+                                                .addOnSuccessListener(command -> {
+                                                    if (command.getDocuments().size() > 0) {
+                                                        SPUtil.getInstance().setParam(Constants.CACHE_USER, command.getDocuments().get(0).toObject(UserExtendData.class));
+                                                    }
+                                                });
                                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                         LoginActivity.this.finish();
                                     }
@@ -135,5 +145,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             default:
         }
+    }
+
+    private void forgetPwd() {
+        String userEmail = etUserEmail.getText().toString().trim();
+        if (TextUtils.isEmpty(userEmail)) {
+            Toast.makeText(this, "user email is not empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!RegUtil.isEmail(userEmail)) {
+            Toast.makeText(this, "user email is not valid", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mAuth.sendPasswordResetEmail(userEmail);
     }
 }
